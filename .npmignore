@@ -1,0 +1,6 @@
+lib/
+tsconfig.json
+package-lock.json
+src
+.vscode
+.node-version
