@@ -1,6 +1,6 @@
 {
   "name": "@thunder_fury/react-components",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "react components",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -28,6 +28,7 @@
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
     "@types/react-test-renderer": "^17.0.1",
+    "axios": "^0.21.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts-ts": "^3.1.0",
