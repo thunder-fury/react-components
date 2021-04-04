@@ -1,12 +1,13 @@
 export interface ButtonProps{
-  txt: string
+  label?: string
+  backgroundColor?: string
   onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void
 }
 
 export interface SampleProps {
-  txt: string
+  txt?: string
 }
 
 export interface PagiNationProps {
-  url: string
+  url?: string
 }
