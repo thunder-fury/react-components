@@ -7,6 +7,7 @@ export default {
   component: Button,
   argTypes: {
     backgroundColor: { control: 'color' },
+    onclick: { action: 'clicked'}
   },
 } as Meta;
 
