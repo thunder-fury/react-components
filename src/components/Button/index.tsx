@@ -4,7 +4,7 @@ import { Color } from '../../styles/Color'
 export interface ButtonProps{
   label?: string
   onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void
-  btnColor?: 'primary' | 'error' | 'success' | 'dark'
+  buttonColor?: 'primary' | 'error' | 'success' | 'dark'
 }
 
 const Btn = styled.button`
@@ -31,11 +31,11 @@ const Btn = styled.button`
 export const Button: React.FC<ButtonProps> = ({
   label,
   onClick,
-  btnColor
+  buttonColor
 }) => {
   return (
     <Btn 
-      className={[`.is-${btnColor}`].join(' ')}
+      className={[`is--${buttonColor}`].join(' ')}
       onClick={onClick}>
     {label}</Btn>
   )

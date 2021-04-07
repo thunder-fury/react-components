@@ -7,9 +7,9 @@ export default {
   component: Button,
   argTypes: {
     // backgroundColor: { control: 'color' },
-    backgroundColor: {
-      control: { type: 'select', options: ['primary'] }
-    },
+    // backgroundColor: {
+    //   control: { type: 'select', options: ['primary'] }
+    // },
     onClick: { action: 'clicked' },
   },
 } as Meta;
@@ -19,4 +19,5 @@ const Template: Story = (args) => <Button {...args} />;
 export const Primary = Template.bind({});
 Primary.args = {
   label: 'Button',
+  buttonColor: 'primary'
 };
