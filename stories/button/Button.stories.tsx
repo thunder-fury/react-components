@@ -5,19 +5,28 @@ import { Color } from '../../src/styles/Color'
 export default {
   title: 'Button',
   component: Button,
+  label: 'Button',
   argTypes: {
-    // backgroundColor: { control: 'color' },
-    // backgroundColor: {
-    //   control: { type: 'select', options: ['primary'] }
-    // },
+    buttonColor: {
+      control: { 
+        type: 'select', 
+        options: [
+          'primary', 
+          'error', 
+          'success', 
+          'dark'
+        ] 
+      }
+    },
     onClick: { action: 'clicked' },
   },
 } as Meta;
 
 const Template: Story = (args) => <Button {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const Btn = Template.bind({});
+Btn.args = {
   label: 'Button',
-  buttonColor: 'primary'
+  radius: true,
+  
 };
