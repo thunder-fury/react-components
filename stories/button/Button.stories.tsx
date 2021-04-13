@@ -1,11 +1,9 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { Button } from '../../src/components/Button';
-import { Color } from '../../src/styles/Color'
 export default {
-  title: 'Button',
+  title: 'Buttons',
   component: Button,
-  label: 'Button',
   argTypes: {
     buttonColor: {
       control: { 
@@ -24,9 +22,16 @@ export default {
 
 const Template: Story = (args) => <Button {...args} />;
 
-export const Btn = Template.bind({});
-Btn.args = {
+export const TextBtn = Template.bind({});
+TextBtn.args = {
   label: 'Button',
   radius: true,
-  
+  isShadow: true,
+};
+
+export const IconBtn = Template.bind({});
+IconBtn.args = {
+  label: '⚡️',
+  radius: true,
+  isShadow: true,
 };

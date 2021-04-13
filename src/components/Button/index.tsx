@@ -6,6 +6,7 @@ export interface ButtonProps{
   onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void
   buttonColor?: 'primary' | 'error' | 'success' | 'dark'
   radius?: boolean
+  isShadow?:boolean
 }
 
 const Btn = styled.button`
@@ -17,40 +18,53 @@ const Btn = styled.button`
   appearance: none;
   color: ${Color.white};
   background-color: ${Color.black};
-  box-shadow: 0px 10px 50px ${Color.black};
-  padding: 10px 30px;
+  &.is-shadow {
+    box-shadow: 0px 10px 50px ${Color.black};
+  }
+  padding: 10px 15px;
   &.is-radius {
     border-radius: 30px;
   }
   &.is-primary {
     background-color: ${Color.primary};
-    box-shadow: 0px 10px 50px ${Color.primary};
+    &.is-shadow {
+      box-shadow: 0px 10px 50px ${Color.primary};
+    }
   }
   &.is-error {
     background-color: ${Color.error};
-    box-shadow: 0px 10px 50px ${Color.error};
+    &.is-shadow {
+      box-shadow: 0px 10px 50px ${Color.error};
+    }
   }
   &.is-success {
     background-color: ${Color.success};
-    box-shadow: 0px 10px 50px ${Color.success};
+    &.is-shadow {
+      box-shadow: 0px 10px 50px ${Color.success};
+    }
   }
   &.is-dark {
     background-color: ${Color.dark};
-    box-shadow: 0px 10px 50px  ${Color.dark};
+    &.is-shadow {
+      box-shadow: 0px 10px 50px  ${Color.dark};
+    }
   }
 `
-
 export const Button: React.FC<ButtonProps> = ({
   label,
   onClick,
   buttonColor,
-  radius
+  radius,
+  isShadow,
 }) => {
   return (
     <Btn 
-      className={[`is-${buttonColor}`, radius? 'is-radius': ''].join(' ')}
-      onClick={onClick}>
-    {label}</Btn>
+      className={[
+        `is-${buttonColor}`, radius? 'is-radius': '',
+        isShadow? 'is-shadow' : ''
+      ].join(' ')}
+      onClick={onClick}>{label}
+    </Btn>
   )
 }
 
