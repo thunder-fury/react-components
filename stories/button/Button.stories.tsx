@@ -31,7 +31,7 @@ TextBtn.args = {
 
 export const IconBtn = Template.bind({});
 IconBtn.args = {
-  label: '⚡️',
+  label: '🌪',
   radius: true,
   isShadow: true,
 };

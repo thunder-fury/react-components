@@ -4,4 +4,4 @@
 
 ## storybook
 
-https://thunderfury-react-component.netlify.app/?path=/story/button--primary
+https://thunderfury-react-component.netlify.app/
