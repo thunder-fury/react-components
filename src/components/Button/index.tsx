@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Color } from '../../styles/Color'
-export interface ButtonProps{
+export interface Props{
   label?: string
   onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void
   buttonColor?: 'primary' | 'error' | 'success' | 'dark'
@@ -50,7 +50,7 @@ const Btn = styled.button`
     }
   }
 `
-export const Button: React.FC<ButtonProps> = ({
+export const Button: React.FC<Props> = ({
   label,
   onClick,
   buttonColor,
@@ -63,8 +63,7 @@ export const Button: React.FC<ButtonProps> = ({
         `is-${buttonColor}`, radius? 'is-radius': '',
         isShadow? 'is-shadow' : ''
       ].join(' ')}
-      onClick={onClick}>{label}
-    </Btn>
+      onClick={onClick}>{label}</Btn>
   )
 }
 

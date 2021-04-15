@@ -1,6 +1,6 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react';
-import { Button } from '../../src/components/Button';
+import React from 'react'
+import { Story, Meta } from '@storybook/react'
+import { Button } from '../../src/components/Button'
 export default {
   title: 'Buttons',
   component: Button,
@@ -20,16 +20,16 @@ export default {
   },
 } as Meta;
 
-const Template: Story = (args) => <Button {...args} />;
+const Template: Story = (args) => <Button {...args} />
 
-export const TextBtn = Template.bind({});
+export const TextBtn = Template.bind({})
 TextBtn.args = {
   label: 'Button',
   radius: true,
   isShadow: true,
 };
 
-export const IconBtn = Template.bind({});
+export const IconBtn = Template.bind({})
 IconBtn.args = {
   label: '🌪',
   radius: true,
