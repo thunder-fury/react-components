@@ -8,6 +8,7 @@ interface Props {
   txt?: string
   radius?: boolean
   isShadow?:boolean
+  btnLabel?: string
   onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void
 }
 
@@ -25,7 +26,7 @@ const ModalBoxInner = styled.div`
   &.is-shadow {
     box-shadow: 0px 10px 50px ${Color.black};
   }
-  padding: 10px 15px;
+  padding: 30px;
   &.is-radius {
     border-radius: 10px;
   }
@@ -52,6 +53,7 @@ const ModalBoxInner = styled.div`
 
 `
 const Title = styled.h2`
+  margin: initial;
   &.is-primary {
     color: ${Color.primary};
   }
@@ -68,6 +70,7 @@ const Title = styled.h2`
 const Txt = styled.p`
   font-size: 12px;
   text-align: left;
+  line-height: 22px;
 `
 export const Modal: React.FC<Props> = ({
   thema,
@@ -75,7 +78,8 @@ export const Modal: React.FC<Props> = ({
   txt,
   onClick,
   radius,
-  isShadow
+  isShadow,
+  btnLabel
 }) => {
   return(
     <>
@@ -96,7 +100,7 @@ export const Modal: React.FC<Props> = ({
           <Button
             buttonColor={thema}
             isShadow={isShadow}
-            label="🙅‍♂️"
+            label={btnLabel}
             onClick={onClick}
             radius
           />
