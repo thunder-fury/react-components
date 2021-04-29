@@ -7,6 +7,7 @@ export interface Props{
   buttonColor?: 'primary' | 'error' | 'success' | 'dark'
   radius?: boolean
   isShadow?:boolean
+  className?: string
 }
 
 const Btn = styled.button`
@@ -17,9 +18,9 @@ const Btn = styled.button`
   padding: 0;
   appearance: none;
   color: ${Color.white};
-  background-color: ${Color.black};
+  /* background-color: ${Color.black}; */
   &.is-shadow {
-    box-shadow: 0px 10px 50px ${Color.black};
+    /* box-shadow: 0px 10px 50px ${Color.black}; */
   }
   padding: 10px 15px;
   &.is-radius {
@@ -56,12 +57,14 @@ export const Button: React.FC<Props> = ({
   buttonColor,
   radius,
   isShadow,
+  className
 }) => {
   return (
     <Btn 
       className={[
         `is-${buttonColor}`, radius? 'is-radius': '',
-        isShadow? 'is-shadow' : ''
+        isShadow? 'is-shadow' : '',
+        className
       ].join(' ')}
       onClick={onClick}>{label}</Btn>
   )

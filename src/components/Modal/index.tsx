@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import Button from './../Button'
-import { Color } from './../../styles/Color'
+import Button from '../Button'
+import { Color } from '../../styles/Color'
 interface Props {
   thema?: 'primary' | 'error' | 'success' | 'dark'
   title?: string
@@ -110,3 +110,5 @@ export const Modal: React.FC<Props> = ({
     </>
   )
 }
+
+export default Modal
