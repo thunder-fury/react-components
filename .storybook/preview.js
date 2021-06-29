@@ -1,3 +1,5 @@
+import { addParameters, addDecorator, configure } from '@storybook/react';
+import { addReadme } from 'storybook-readme'
 import { themes } from '@storybook/theming';
 export const parameters = {
   docs: {
@@ -11,3 +13,12 @@ export const parameters = {
     },
   },
 }
+addParameters({
+  options: {
+    showPanel: true,
+    panelPosition: 'right',
+    // theme: basicTheme,
+    theme: themes.dark,
+  },
+})
+addDecorator(addReadme)
