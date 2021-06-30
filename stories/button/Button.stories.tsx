@@ -50,7 +50,7 @@ storiesOf('Buttons', module)
   .addParameters({
     readme: {
       codeTheme: 'duotone-sea',
-      // content: Readme,
+      content: Readme,
       sidebar: Readme,
       // codeTheme: 'github',
     },
