@@ -56,7 +56,7 @@ storiesOf('Buttons', module)
     },
   })
 
-  const Template: Story = (args) => <Button {...args} />
+const Template: Story = (args) => <Button {...args} />
 export const TextBtn = Template.bind({})
 TextBtn.args = {
   label: 'Button',
