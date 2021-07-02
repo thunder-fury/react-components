@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { Pagination, Next, Prev } from '../../src/components/Module/PageNation'
+import Pagination from '../../src/components/Module/PageNation'
+import Next from '../../src/components/Module/PageNation/Next'
+import Prev from '../../src/components/Module/PageNation/Prev'
+
 import styled from 'styled-components';
 import Posts from './Posts'
 export interface Props {

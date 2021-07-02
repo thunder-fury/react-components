@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../../Atoms/Button'
+import Next from './Next'
+import Prev from './Prev'
 interface Props {
   borderRound?: number
   upperPageBound: number
@@ -118,6 +120,7 @@ export const Pagination: React.FC<Props> = ({
   );
 };
 
+
 const Paginations = styled.ul`
   display: flex;
   list-style: none;
@@ -158,80 +161,6 @@ const Ellipsis = styled.li`
   align-items: center;
   justify-content: center;
 `
-
 export default Pagination
 
-export interface PagerBtnPorps {
-  currentPage: number
-  setCurrentPage: any
-  totalPage?: number
-  upperPageBound?: number
-  className?: string | number
-  borderRound?: number
-  ellipsis?: boolean
-}
 
-export const Next: React.FC<PagerBtnPorps> = ({
-  currentPage,
-  setCurrentPage,
-  totalPage,
-  className,
-  borderRound,
-  ellipsis
-}) => {
-  return (
-    <Btn
-      borderRound={borderRound}
-      onClick={() => {
-        const pageNum = (currentPage++) + 1;
-        setCurrentPage(pageNum)
-      }}
-      className={[currentPage == totalPage ? 'is-disabled' : null, className].join(' ')}>
-      { ellipsis? '...' : '→'}
-    </Btn>
-  );
-};
-export const Prev: React.FC<PagerBtnPorps> = ({
-  currentPage,
-  setCurrentPage,
-  className,
-  borderRound,
-  ellipsis
-}) => {
-  return (
-    <Btn
-      borderRound={borderRound}
-      onClick={() => {
-        const pageNum = (currentPage++) - 1;
-        setCurrentPage(pageNum)
-      }}
-      className={[currentPage == 1 ? 'is-disabled' : null, className].join(' ')} >
-      { ellipsis? '...' : '←'}
-    </Btn>
-  );
-};
-
-const Btn: any = styled.div<PagerBtnPorps>`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  width: 40px;
-  cursor: pointer;
-  border-radius:${(props) => (props.borderRound)}px;
-  &:hover {
-    background: #dfdfdf
-  }
-  &.is-disabled {
-    pointer-events: none;
-    opacity: 0.1;
-  }
-  &.ellipsis {
-    &:hover {
-      background: none;
-    }
-  }
-  >svg {
-    width: 15px
-  }
-`

@@ -1,6 +1,6 @@
 {
   "name": "@thunder_fury/react-components",
-  "version": "0.1.9",
+  "version": "0.2.6",
   "description": "react components",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,6 +8,7 @@
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
+    "npm-build": "npm publish --access public",
     "build-storybook": "build-storybook"
   },
   "repository": {
