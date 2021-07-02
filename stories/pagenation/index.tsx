@@ -11,6 +11,7 @@ export interface Props {
   firstAndLast?: boolean
   borderRound?: number
   datas?: any
+  displayData: boolean
 }
 
 const PaginationContainer = styled.div`
@@ -27,7 +28,8 @@ export const PageNation: React.FC<Props> = ({
   postsPerList,
   firstAndLast,
   borderRound,
-  datas
+  datas,
+  displayData
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   totalPage = Math.ceil(count / postsPerList);
@@ -50,7 +52,7 @@ export const PageNation: React.FC<Props> = ({
   
   return (
     <PaginationContainer>
-      <Posts posts={currentPosts} />
+      {(displayData ? <Posts posts={currentPosts} /> : '')}
       {count > 0 && (
         <Prev
           setCurrentPage={setCurrentPage}

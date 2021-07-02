@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 export interface PostProps {
   loading?: boolean
   posts?: any
@@ -13,11 +13,11 @@ export const Posts: React.FC<PostProps> = ({
   return (
     <>
     <ul>
-      {/* {posts.map(post =>(
+      {posts.map(post =>(
         <li key={post.id}>
           {post.name}
         </li>
-      ))} */}
+      ))}
     </ul>
     </>
   );
