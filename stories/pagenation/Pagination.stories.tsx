@@ -3,6 +3,7 @@ import React from 'react'
 import { PageNation } from '.'
 import Readme from './README.md'
 import { Story, Meta, storiesOf } from '@storybook/react'
+import { codeThema } from '../CodeThema'
 export default {
   title: 'Pagination',
   component: { PageNation },
@@ -18,15 +19,7 @@ export default {
   },
 };
 
-storiesOf('Pagination', module)
-  .addParameters({
-    readme: {
-      codeTheme: 'duotone-sea',
-      // content: Readme,
-      sidebar: Readme,
-      // codeTheme: 'github',
-    },
-  })
+codeThema(`Pagination`, Readme)
 
 const Template = {
   PaginationConf: (args) =>
@@ -51,7 +44,7 @@ Base.args = {
   count: posts.length,　//게시물 수
   postsPerList: 5,　//보여주고싶은 글
   backgroundColor: '#000',
-  upperPageBound: 3,　//보여주고싶은 페이지네이션수
+  upperPageBound: 1,　//보여주고싶은 페이지네이션수
   firstAndLast: true,　//첫 페이지 마지막 페이지 네이션 표시 
   borderRound: 4,　
   datas: posts, // 통신한 게시물

@@ -3,7 +3,7 @@ import {withDocs} from 'storybook-readme'
 import { Story, Meta, storiesOf } from '@storybook/react'
 import { Button } from '../../src/components/Atoms/Button/'
 import Readme from './README.md'
-
+import {codeThema} from '../CodeThema'
 // storiesOf('Button', module)
 //   .addParameters({
 //     readme: {
@@ -19,6 +19,7 @@ import Readme from './README.md'
 //   .add('Success Button', () => (
 //     <button>TEST</button>
 //   ));
+
 
 export default {
   title: 'Buttons',
@@ -45,16 +46,8 @@ export default {
 } as Meta;
 
 
+codeThema(`Buttons`, Readme)
 
-storiesOf('Buttons', module)
-  .addParameters({
-    readme: {
-      codeTheme: 'duotone-sea',
-      content: Readme,
-      sidebar: Readme,
-      // codeTheme: 'github',
-    },
-  })
 
 const Template: Story = (args) => <Button {...args} />
 export const TextBtn = Template.bind({})

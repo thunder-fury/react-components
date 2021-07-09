@@ -3,6 +3,7 @@ import {withDocs} from 'storybook-readme'
 import { Story, Meta, storiesOf } from '@storybook/react'
 import { Modal } from '../../src/components/Module/Mdal'
 import Readme from './README.md'
+import {codeThema} from '../CodeThema'
 export default {
   title: 'Modal',
   component: Modal,
@@ -27,15 +28,7 @@ export default {
   },
 } as Meta;
 
-storiesOf('Modal', module)
-  .addParameters({
-    readme: {
-      codeTheme: 'duotone-sea',
-      // content: Readme,
-      sidebar: Readme,
-      // codeTheme: 'github',
-    },
-  })
+codeThema(`Modal`, Readme)
 
 const Template: Story = (args) => <Modal {...args} />
 
