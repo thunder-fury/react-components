@@ -8,7 +8,6 @@ export interface Props{
   radius?: boolean
   isShadow?:boolean
 }
-
 export const Button: React.FC<Props> = ({
   label,
   onClick,
