@@ -1,15 +1,15 @@
 import * as React from "react";
 import {withDocs} from 'storybook-readme'
 import { Story, Meta, storiesOf } from '@storybook/react'
-import Button from '../../src/components/Module/SvgDownloadButton'
+import SVGDownloadBtn from '../../src/components/Module/SvgDownloadButton'
 import Readme from './README.md'
 import {codeThema} from '../CodeThema'
 
 const data = "テスト, テスト, テスト\nテスト, テスト, テスト";
 
 export default {
-  title: 'SVGDownloadButtons',
-  component: Button,
+  title: 'SVGDownloadButton',
+  component: SVGDownloadBtn,
   argTypes: {
     buttonColor: {
       control: { 
@@ -32,16 +32,16 @@ export default {
 } as Meta;
 
 
-codeThema(`SVGDownloadButtons`, Readme)
+codeThema(`SVGDownloadButton`, Readme)
 
 
-const Template: Story = (args) => <Button data={data} {...args} />
-export const SVGDownloadButtons = Template.bind({})
-SVGDownloadButtons.args = {
-  label: `CSVダウンロード`,
+const Template: Story = (args) => <SVGDownloadBtn data={data} {...args} />
+export const SVGDownloadButton = Template.bind({})
+SVGDownloadButton.args = {
+  label: `CSV Download`,
   radius: true,
   isShadow: true,
   datas: data,
-  fileName: `CSVダウンロードテスト`
+  fileName: `TEST_CSV_Download`
 };
 

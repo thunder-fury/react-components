@@ -9,7 +9,7 @@ interface Props {
   isShadow?:boolean
 }
 
-export const SVGDownloadButtons: React.FC<Props> = ({
+export const SVGDownloadButton: React.FC<Props> = ({
   label,
   data,
   fileName,
@@ -74,4 +74,4 @@ export const SVGDownloadButtons: React.FC<Props> = ({
   )
 }
 
-export default SVGDownloadButtons
+export default SVGDownloadButton
