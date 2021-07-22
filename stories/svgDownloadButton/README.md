@@ -1,4 +1,10 @@
 # Button Componet
 ```ts
-import { SVGDownloadButtons } from '@thunder_fury/react-components'
+import { SvgDownloadButton } from '@thunder_fury/react-components'
+```
+```tsx
+<SVGDownloadButton
+  data={「,」Separation strings}
+  fileName={fileName strings}
+/>
 ```

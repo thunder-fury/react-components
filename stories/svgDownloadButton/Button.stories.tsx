@@ -35,13 +35,13 @@ export default {
 codeThema(`SVGDownloadButton`, Readme)
 
 
-const Template: Story = (args) => <SVGDownloadBtn data={data} {...args} />
+// const Template: Story = (args) => <SVGDownloadBtn {...args} />
 export const SVGDownloadButton = Template.bind({})
 SVGDownloadButton.args = {
   label: `CSV Download`,
   radius: true,
   isShadow: true,
-  datas: data,
+  data: data,
   fileName: `TEST_CSV_Download`
 };
 

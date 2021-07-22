@@ -2,6 +2,4 @@
 
 ## under development...
 
-## storybook
-
-https://thunderfury-react-component.netlify.app/?path=/story/button--primary
+## [document](https://thunderfury-react-component.netlify.app)
