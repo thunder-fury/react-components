@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 import Next from './Next'
 import Prev from './Prev'
 interface Props {
@@ -13,6 +13,27 @@ interface Props {
   endPage: number
   setCurrentPage?: Function
   firstAndLast?: boolean
+}
+
+export const pageNationFormula = (datas: any, currentPage: number, perPage: number, upperPage:number): {[key:string]: number} => {
+  let totalPage = Math.ceil(datas?.length / perPage)
+  let startPage = currentPage - Math.round((upperPage - 1) / 2)
+  let endPage = currentPage + Math.floor((upperPage - 1) / 2)
+  if (startPage < 1) { endPage += 1 - startPage }
+  startPage = Math.max(startPage, 1)
+  if (endPage > totalPage) { startPage -= endPage - totalPage }
+  endPage = Math.min(totalPage, endPage)
+
+  const indexOfLastPost = currentPage * perPage
+  const indexOfFirstPost = indexOfLastPost - perPage
+  let currentPosts = datas && datas.slice(indexOfFirstPost, indexOfLastPost)
+
+  return {
+    totalPage,
+    startPage,
+    endPage,
+    currentPosts
+  }
 }
 
 export const Pagination: React.FC<Props> = ({
@@ -33,71 +54,70 @@ export const Pagination: React.FC<Props> = ({
   }
   let displayFirstNum: number = firstAndLast?  2 :  1
   let displayLastNum: number = firstAndLast?  1 :  0
+  
   return (
     <>
       <Prev
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
       />
-      <nav>
-        <Paginations>
-          {firstAndLast && startPage != 1 && (
+      <PagiNation>
+        {firstAndLast && startPage != 1 && (
+          <PageNum
+            borderRound={borderRound}
+          >
+            <Link
+              onClick={() => paginate(1)}
+            >1</Link>
+          </PageNum>)
+        }
+        {currentPage > (upperPageBound / 2) + displayFirstNum && (
+          <Ellipsis>
+          <Prev
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+            ellipsis
+          />
+          </Ellipsis>
+        )}
+        {pageNumbers && pageNumbers.map(number => {
+          return (
+            <PageNum
+              backgroundColor={backgroundColor}
+              key={number}
+              borderRound={borderRound}
+              className={currentPage == number ? 'is-current' : null}
+            >
+              <Link
+                onClick={() => paginate(number)}
+                // href='#'
+              > {number}
+              </Link>
+            </PageNum>
+          )
+        })}
+        {currentPage <= totalPage - (upperPageBound / 2) - displayLastNum && (
+          <Ellipsis>
+          <Next
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+            upperPageBound={upperPageBound}
+            totalPage={totalPage}
+            ellipsis
+          />
+        </Ellipsis>
+        )}
+        {firstAndLast && currentPage <= totalPage - (upperPageBound / 2) && (
             <PageNum
               borderRound={borderRound}
             >
-              <Link
-                onClick={() => paginate(1)}
-              >1</Link>
-            </PageNum>)
-          }
-          {currentPage > (upperPageBound / 2) + displayFirstNum && (
-            <Ellipsis>
-            <Prev
-              setCurrentPage={setCurrentPage}
-              currentPage={currentPage}
-              ellipsis
-            />
-            </Ellipsis>
-          )}
-          {pageNumbers && pageNumbers.map(number => {
-            return (
-              <PageNum
-                backgroundColor={backgroundColor}
-                key={number}
-                borderRound={borderRound}
-                className={currentPage == number ? 'is-current' : null}
-              >
-                <Link
-                  onClick={() => paginate(number)}
-                  // href='#'
-                > {number}
-                </Link>
-              </PageNum>
-            )
-          })}
-          {currentPage <= totalPage - (upperPageBound / 2) - displayLastNum && (
-            <Ellipsis>
-            <Next
-              setCurrentPage={setCurrentPage}
-              currentPage={currentPage}
-              upperPageBound={upperPageBound}
-              totalPage={totalPage}
-              ellipsis
-            />
-          </Ellipsis>
-          )}
-          {firstAndLast && currentPage <= totalPage - (upperPageBound / 2) && (
-              <PageNum
-                borderRound={borderRound}
-              >
-              <Link
-                onClick={() => paginate(totalPage)}
-              >{totalPage}</Link>
-            </PageNum>
-            )
-          }
-        </Paginations>
-      </nav>
+            <Link
+              onClick={() => paginate(totalPage)}
+            >{totalPage}</Link>
+          </PageNum>
+          )
+        }
+      </PagiNation>
       <Next
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
@@ -108,8 +128,11 @@ export const Pagination: React.FC<Props> = ({
   );
 };
 
+const Container = styled.div`
+  display: flex;
+`
 
-const Paginations = styled.ul`
+const PagiNation = styled.ul`
   display: flex;
   list-style: none;
   padding: 0;
@@ -150,7 +173,7 @@ const Ellipsis = styled.li`
   justify-content: center;
 `
 
-const Btn: any = styled.div<Props>`
+export const Btn: any = styled.div<Props>`
   display: flex;
   justify-content: center;
   align-items: center;

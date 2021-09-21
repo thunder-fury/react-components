@@ -1,6 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
-import Button from '../../Atoms/Button'
+import React from 'react'
+import { Btn } from './'
 
 export interface Props {
   currentPage: number
@@ -32,30 +31,5 @@ export const Next: React.FC<Props> = ({
     </Btn>
   );
 };
-
-const Btn: any = styled.div<Props>`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  width: 40px;
-  cursor: pointer;
-  border-radius:${(props) => (props.borderRound)}px;
-  &:hover {
-    background: #dfdfdf
-  }
-  &.is-disabled {
-    pointer-events: none;
-    opacity: 0.1;
-  }
-  &.ellipsis {
-    &:hover {
-      background: none;
-    }
-  }
-  >svg {
-    width: 15px
-  }
-`
 
 export default Next

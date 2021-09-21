@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Pagination from '../../src/components/Module/PageNation'
+import Pagination, { pageNationFormula } from '../../src/components/Module/PageNation'
 import styled from 'styled-components';
 import Posts from './Posts'
 export interface Props {
