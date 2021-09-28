@@ -1,55 +1,54 @@
 import React from 'react'
-import styled from 'styled-components'
 import Next from './Next'
 import Prev from './Prev'
-interface Props {
-  borderRound?: number
-  upperPageBound: number
-  paginate: Function
-  currentPage: number
-  backgroundColor?: string
-  totalPage: number
-  startPage?: number
-  endPage: number
-  setCurrentPage?: Function
-  firstAndLast?: boolean
-}
+import styled from 'styled-components'
 
-export const pageNationFormula = (datas: any, currentPage: number, perPage: number, upperPage:number): {[key:string]: number} => {
-  let totalPage = Math.ceil(datas?.length / perPage)
-  let startPage = currentPage - Math.round((upperPage - 1) / 2)
-  let endPage = currentPage + Math.floor((upperPage - 1) / 2)
+export const PageNationConfig = (info:{
+    datas: any, 
+    currentPage: number, 
+    perPage: number, 
+    upperPage:number}): {[key:string]: number} => {
+  let totalPage = Math.ceil(info.datas?.length / info.perPage)
+  let startPage = info.currentPage - Math.round((info.upperPage - 1) / 2)
+  let endPage = info.currentPage + Math.floor((info.upperPage - 1) / 2)
   if (startPage < 1) { endPage += 1 - startPage }
   startPage = Math.max(startPage, 1)
   if (endPage > totalPage) { startPage -= endPage - totalPage }
   endPage = Math.min(totalPage, endPage)
 
-  const indexOfLastPost = currentPage * perPage
-  const indexOfFirstPost = indexOfLastPost - perPage
-  let currentPosts = datas && datas.slice(indexOfFirstPost, indexOfLastPost)
-
+  const indexOfLastPost = info.currentPage * info.perPage
+  const indexOfFirstPost = indexOfLastPost - info.perPage
+  let currentPosts = info.datas && info.datas.slice(indexOfFirstPost, indexOfLastPost)
+  let currentPage = info.currentPage
+  let upperPage = info.upperPage
   return {
     totalPage,
     startPage,
     endPage,
-    currentPosts
+    currentPage,
+    currentPosts,
+    upperPage
   }
+}
+
+interface Props {
+  borderRound?: number
+  backgroundColor?: string
+  setCurrentPage?: any
+  firstAndLast?: boolean
+  config: {[key: string]: number}
 }
 
 export const Pagination: React.FC<Props> = ({
   borderRound,
-  upperPageBound,
-  paginate,
-  currentPage,
   backgroundColor,
-  totalPage,
-  startPage,
-  endPage,
   setCurrentPage,
-  firstAndLast
+  firstAndLast,
+  config
 }) => {
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
   const pageNumbers = [];
-  for (let i: any = startPage; i <= endPage; i++){
+  for (let i: any = config.startPage; i <= config.endPage; i++){
     pageNumbers.push(i);
   }
   let displayFirstNum: number = firstAndLast?  2 :  1
@@ -59,10 +58,10 @@ export const Pagination: React.FC<Props> = ({
     <>
       <Prev
         setCurrentPage={setCurrentPage}
-        currentPage={currentPage}
+        currentPage={config.currentPage}
       />
       <PagiNation>
-        {firstAndLast && startPage != 1 && (
+        {firstAndLast && config.startPage != 1 && (
           <PageNum
             borderRound={borderRound}
           >
@@ -71,11 +70,11 @@ export const Pagination: React.FC<Props> = ({
             >1</Link>
           </PageNum>)
         }
-        {currentPage > (upperPageBound / 2) + displayFirstNum && (
+        {config.currentPage > (config.upperPage / 2) + displayFirstNum && (
           <Ellipsis>
           <Prev
             setCurrentPage={setCurrentPage}
-            currentPage={currentPage}
+            currentPage={config.currentPage}
             ellipsis
           />
           </Ellipsis>
@@ -86,7 +85,7 @@ export const Pagination: React.FC<Props> = ({
               backgroundColor={backgroundColor}
               key={number}
               borderRound={borderRound}
-              className={currentPage == number ? 'is-current' : null}
+              className={config.currentPage == number ? 'is-current' : null}
             >
               <Link
                 onClick={() => paginate(number)}
@@ -96,33 +95,33 @@ export const Pagination: React.FC<Props> = ({
             </PageNum>
           )
         })}
-        {currentPage <= totalPage - (upperPageBound / 2) - displayLastNum && (
+        {config.currentPage <= config.totalPage - (config.upperPage / 2) - displayLastNum && (
           <Ellipsis>
           <Next
             setCurrentPage={setCurrentPage}
-            currentPage={currentPage}
-            upperPageBound={upperPageBound}
-            totalPage={totalPage}
+            currentPage={config.currentPage}
+            upperPage={config.upperPage}
+            totalPage={config.totalPage}
             ellipsis
           />
         </Ellipsis>
         )}
-        {firstAndLast && currentPage <= totalPage - (upperPageBound / 2) && (
+        {firstAndLast && config.currentPage <= config.totalPage - (config.upperPage / 2) && (
             <PageNum
               borderRound={borderRound}
             >
             <Link
-              onClick={() => paginate(totalPage)}
-            >{totalPage}</Link>
+              onClick={() => paginate(config.totalPage)}
+            >{config.totalPage}</Link>
           </PageNum>
           )
         }
       </PagiNation>
       <Next
         setCurrentPage={setCurrentPage}
-        currentPage={currentPage}
-        upperPageBound={upperPageBound}
-        totalPage={totalPage}
+        currentPage={config.currentPage}
+        upperPage={config.upperPage}
+        totalPage={config.totalPage}
       />
     </>
   );

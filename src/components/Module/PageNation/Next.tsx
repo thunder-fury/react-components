@@ -5,7 +5,7 @@ export interface Props {
   currentPage: number
   setCurrentPage: any
   totalPage?: number
-  upperPageBound?: number
+  upperPage?: number
   className?: string | number
   borderRound?: number
   ellipsis?: boolean
