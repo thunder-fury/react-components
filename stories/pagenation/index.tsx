@@ -91,19 +91,19 @@ export const PageNation: React.FC<Props> = ({
   // 보여주고싶은 게시물수가 될것이다 */
   // let currentPosts = datas && datas.slice(indexOfFirstPost, indexOfLastPost)
 
-  const pageNationinfo = PageNationConfig({
+  const pageNationConfig = PageNationConfig({
     datas,
     currentPage,
     perPage: 2,
     upperPage: 1
   })
-  console.log(pageNationinfo.currentPosts)
+  console.log(pageNationConfig.currentPosts)
   return (
     <PaginationContainer>
-      {(displayData && <Posts posts={pageNationinfo.currentPosts} />)}
+      {(displayData && <Posts posts={pageNationConfig.currentPosts} />)}
       {count > 0 && (
         <Pagination
-          config={pageNationinfo}
+          config={pageNationConfig}
           setCurrentPage={setCurrentPage}
           backgroundColor={backgroundColor}
           firstAndLast={firstAndLast}
