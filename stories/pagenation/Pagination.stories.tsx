@@ -21,12 +21,10 @@ export default {
 
 codeThema(`Pagination`, Readme)
 
-const Template = {
-  PaginationConf: (args) =>
-  <>
-    <PageNation {...args}></PageNation>
-  </>
-};
+
+const Template: Story = (args) => <PageNation {...args} />
+
+
 const posts = [
   { id: 1, name: 'Test1', content: '', url: ''},
   { id: 2, name: 'Test2', content: '', url: ''},
@@ -39,14 +37,29 @@ const posts = [
   { id: 9, name: 'Test9', content: '', url: ''},
   { id: 10, name: 'Test10', content: '', url: ''},
 ]
-export const Base = Template.PaginationConf.bind({});
-Base.args = {
+export const pagination = Template.bind({});
+pagination.args = {
   count: posts.length,　//게시물 수
   postsPerList: 5,　//보여주고싶은 글
   backgroundColor: '#000',
   upperPage: 1,　//보여주고싶은 페이지네이션수
   firstAndLast: true,　//첫 페이지 마지막 페이지 네이션 표시 
   borderRound: 4,　
+  current: 2,
   datas: posts, // 통신한 게시물
-  displayData: false 
+  // displayData: false 
+};
+
+
+export const listPagination = Template.bind({});
+listPagination.args = {
+  count: posts.length,　//게시물 수
+  postsPerList: 5,　//보여주고싶은 글
+  backgroundColor: '#000',
+  current: 1,
+  upperPage: 1,　//보여주고싶은 페이지네이션수
+  firstAndLast: true,　//첫 페이지 마지막 페이지 네이션 표시 
+  borderRound: 4,　
+  datas: posts, // 통신한 게시물
+  displayData: true 
 };

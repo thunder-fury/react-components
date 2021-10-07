@@ -6,7 +6,7 @@ interface Props {
   fileName?: string
   buttonColor?: 'primary' | 'error' | 'success' | 'dark'
   radius?: boolean
-  isShadow?:boolean
+  shadow?:boolean
 }
 
 export const SVGDownloadButton: React.FC<Props> = ({
@@ -15,7 +15,7 @@ export const SVGDownloadButton: React.FC<Props> = ({
   fileName,
   buttonColor,
   radius,
-  isShadow
+  shadow
 }) => {
   const downloadCSV = () => {
     //CSV 파일명
@@ -67,9 +67,9 @@ export const SVGDownloadButton: React.FC<Props> = ({
     <Button 
       label={label}
       onClick={downloadCSV}
-      buttonColor={buttonColor}
+      thema={buttonColor}
       radius={radius}
-      isShadow={isShadow}
+      shadow={shadow}
     />
   )
 }

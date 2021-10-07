@@ -8,19 +8,19 @@ export default {
   title: 'Search',
   component: { Search },
   argTypes: {
-    backgroundColor: {
-      control: 'color',
-    },
-    parameters: {
-      docs: {
-        description: { component: Readme },
-      },
-    },
+    // backgroundColor: {
+    //   control: 'color',
+    // },
+    // parameters: {
+    //   docs: {
+    //     description: { component: Readme },
+    //   },
+    // },
   },
 };
 
 codeThema(`Search`, Readme)
-const Template: Story = (args) => <Search searchKey={`title`} posts={posts} {...args} />
+const Template: Story = (args) => <Search {...args} />
 const posts = [
   { id: 1, title: 'html', content: 'html is ...'},
   { id: 2, title: 'css', content: 'css is ...'},
@@ -32,5 +32,6 @@ const posts = [
 ]
 export const SearchBox = Template.bind({});
 SearchBox.args = {
-
+  posts: posts,
+  searchKey: `title`
 };

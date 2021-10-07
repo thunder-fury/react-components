@@ -1,6 +1,6 @@
 {
   "name": "@thunder_fury/react-components",
-  "version": "0.4.7",
+  "version": "0.4.8",
   "description": "react components",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

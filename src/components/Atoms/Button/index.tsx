@@ -3,36 +3,39 @@ import styled from 'styled-components'
 import { Color } from '../../../styles/common/Color'
 export interface Props{
   label?: string
-  onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void
-  buttonColor?: 'primary' | 'error' | 'success' | 'dark'
+  onClick?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void
+  thema?: 'primary' | 'error' | 'success' | 'dark'
   radius?: boolean
-  isShadow?:boolean
+  shadow?:boolean
+  fontColor?:string
 }
 export const Button: React.FC<Props> = ({
   label,
   onClick,
-  buttonColor,
+  thema,
   radius,
-  isShadow,
+  shadow,
+  fontColor
 }) => {
   return (
     <Btn
+      fontColor={fontColor}
       className={[
-        `is-${buttonColor}`, radius? 'is-radius': '',
-        isShadow? 'is-shadow' : ''
+        `is-${thema}`, radius? 'is-radius': '',
+        shadow? 'is-shadow' : ''
       ].join(' ')}
-      onClick={onClick}>{label}</Btn>
+      onClick={onClick}>{label ? label: `Button`}</Btn>
   )
 }
 
-const Btn = styled.button`
+const Btn = styled.button<{ fontColor?: string}>`
   background-color: transparent;
   border: none;
   cursor: pointer;
   outline: none;
   padding: 0;
   appearance: none;
-  color: ${Color.white};
+  ${(Props) => Props.fontColor ? `color: ${Props.fontColor};`: `color: ${Color.white};`}
   background-color: ${Color.black};
   &.is-shadow {
     box-shadow: 0px 10px 50px ${Color.black};

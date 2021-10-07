@@ -4,7 +4,7 @@ export const codeThema = (componentName, Readme) => {
     .addParameters({
       readme: {
         codeTheme: 'a11y-dark',
-        content: Readme,
+        // content: Readme,
         sidebar: Readme,
         // codeTheme: 'github',
       },

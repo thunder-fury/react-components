@@ -12,6 +12,7 @@ export interface Props {
   borderRound?: number
   datas?: any
   displayData?: boolean
+  current?: number
 }
 
 const PaginationContainer = styled.div`
@@ -23,13 +24,12 @@ const PaginationContainer = styled.div`
 export const PageNation: React.FC<Props> = ({
   count,
   backgroundColor,
-  totalPage,
-  upperPage,
-  postsPerList,
   firstAndLast,
   borderRound,
   datas,
-  displayData
+  displayData,
+  current,
+  upperPage
 }) => {
   // // 현재 페이지 를 설정하는 훅이다
   const [currentPage, setCurrentPage] = useState(1);
@@ -79,7 +79,6 @@ export const PageNation: React.FC<Props> = ({
   // endPage = Math.min(totalPage, endPage)
 
   // // 클릭할경우 현재 페이지를 1씩 늘리는 함수다
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
   
   // /* 보여주고싶은 게시물이 5일경우
   // 마지막 게시물값을 구한다 현페이지는1이고 곱하기 보여주고싶은 게시물수는 5를 라스트 포스트에 할당해준다 결과는 */
@@ -93,9 +92,9 @@ export const PageNation: React.FC<Props> = ({
 
   const pageNationConfig = PageNationConfig({
     datas,
-    currentPage,
+    currentPage: current,
     perPage: 2,
-    upperPage: 1
+    upperPage: upperPage
   })
   console.log(pageNationConfig.currentPosts)
   return (

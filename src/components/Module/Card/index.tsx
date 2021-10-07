@@ -7,19 +7,21 @@ interface Props {
   title?: string
   txt?: string
   radius?: boolean
-  isShadow?:boolean
+  shadow?:boolean
   btnLabel?: string
   onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void
+  fontColor?: string
 }
 
-export const Modal: React.FC<Props> = ({
+export const Card: React.FC<Props> = ({
   thema,
   title,
   txt,
   onClick,
   radius,
-  isShadow,
-  btnLabel
+  shadow,
+  btnLabel,
+  fontColor
 }) => {
   return(
     <>
@@ -28,21 +30,20 @@ export const Modal: React.FC<Props> = ({
           className={[
             `is-${thema}`,
             radius? 'is-radius': '',
-            isShadow? 'is-shadow' : ''
+            shadow? 'is-shadow' : ''
           ].join(' ')}
         >
           <Title
-            className={[
-              `is-${thema}`
-            ].join(' ')}
+            className={`is-${thema}`}
           >{title}</Title>
           <Txt>{txt}</Txt>
           <Button
-            buttonColor={thema}
-            isShadow={isShadow}
+            thema={thema}
+            // shadow={shadow}
             label={btnLabel}
             onClick={onClick}
-            radius
+            radius={radius}
+            fontColor={fontColor}
           />
         </ModalBoxInner>
       </ModalBox>
@@ -114,4 +115,4 @@ const Txt = styled.p`
   line-height: 22px;
 `
 
-export default Modal
+export default Card

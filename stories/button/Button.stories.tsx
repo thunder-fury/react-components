@@ -1,4 +1,3 @@
-import * as React from "react";
 import {withDocs} from 'storybook-readme'
 import { Story, Meta, storiesOf } from '@storybook/react'
 import { Button } from '../../src/components/Atoms/Button/'
@@ -25,7 +24,7 @@ export default {
   title: 'Buttons',
   component: Button,
   argTypes: {
-    buttonColor: {
+    thema: {
       control: { 
         type: 'select', 
         options: [
@@ -37,11 +36,11 @@ export default {
       }
     },
     onClick: { action: 'clicked' },
-    parameters: {
-      docs: {
-        description: { component: Readme },
-      },
-    },
+    // parameters: {
+    //   docs: {
+    //     description: { component: Readme },
+    //   },
+    // },
   },
 } as Meta;
 
@@ -54,14 +53,16 @@ export const TextBtn = Template.bind({})
 TextBtn.args = {
   label: 'Button',
   radius: true,
-  isShadow: true,
+  shadow: true,
+  fontColor: ''
 };
 
 export const IconBtn = Template.bind({})
 IconBtn.args = {
   label: '🌪',
   radius: true,
-  isShadow: true,
+  shadow: true,
+  fontColor: ''
 };
 
 
