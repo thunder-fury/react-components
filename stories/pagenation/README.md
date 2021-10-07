@@ -5,18 +5,15 @@ import { PageNation, PageNationConfig } from '@thunder_fury/react-components'
 ```
 
 ## Props
-<hr/>
 
 |  Name  |  Required  |  Type  | DefaultValue  | Description  |
 | ---- | ---- |  ----  |  ----  |  ----  | 
-|  firstAndLast  |  -  |  boolan  |  false  |  最初のと最後のページネーションを表示するかしないか  |
-|  backgroundColor  |  -  |  string  | #000  | ページネーションの色調整(カラーコード設定)  |
-|  borderRound  |  -  |  number  | null  | ボーダーのラウンド値調整  |
-|  setCurrentPage  |  ○  |  useState  | -  | 現在のページを変更させるProps  |
-|  config  |  ○  |  Object  | -  | ページネーション設定  |
+|  firstAndLast  |  -  |  boolan  |  false  |  pagenation left and right button  |
+|  backgroundColor  |  -  |  string  | #000  | pagenation button color  |
+|  borderRound  |  -  |  number  | null  | pagenation button round  |
+|  setCurrentPage  |  ○  |  useState  | -  | currentPage  |
 
 ## Set Config
-<hr/>
 
 ```tsx
 import { PageNationConfig } from '@thunder_fury/react-components'

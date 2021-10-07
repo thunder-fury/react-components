@@ -14,8 +14,8 @@ import { Button } from '@thunder_fury/react-components'
 ## Props
 |  Name  |  Required  |  Type  | DefaultValue  | Description  |
 | ---- | ---- |  ----  |  ----  |  ----  | 
-|  label  |  -  |  string  |  'Button'  |  ボタンのテキスト |
-|  value  |  -  |  string  |  -  |  ボタンのVaule |
-|  shadow  |  -  |  string  |  -  |  ボタンのshadow |
+|  label  |  -  |  string  |  'Button'  |  Button Text |
+|  value  |  -  |  string  |  -  |  button value |
+|  shadow  |  -  |  string  |  -  |  button shadow |
 <!-- |  icon  |  -  |  string  |  `arrowrightalt`  | ボタンのicon  | -->
-|  radius  |  -  |  boolan  |  false | ボタンのradius  |
+|  radius  |  -  |  boolan  |  false | button radius  |

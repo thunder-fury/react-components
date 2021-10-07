@@ -1,4 +1,4 @@
 # Modal Componet
 ```ts
-import { Modal } from '@thunder_fury/react-components'
+import { Card } from '@thunder_fury/react-components'
 ```
