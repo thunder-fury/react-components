@@ -22,13 +22,13 @@ export default {
 codeThema(`Search`, Readme)
 const Template: Story = (args) => <Search {...args} />
 const posts = [
-  { id: 1, title: 'html', content: 'html is ...'},
-  { id: 2, title: 'css', content: 'css is ...'},
-  { id: 3, title: 'javascript', content: 'javascript is ...'},
-  { id: 4, title: 'react', content: 'react is ...'},
-  { id: 5, title: 'vue', content: 'vue is ...'},
-  { id: 6, title: 'node', content: 'node is ...'},
-  { id: 7, title: 'gatsby', content: 'gatsby is ...'},
+  { id: 1, title: 'html', content: 'html is ...', link: `#`},
+  { id: 2, title: 'css', content: 'css is ...', link: `#`},
+  { id: 3, title: 'javascript', content: 'javascript is ...', link: `#`},
+  { id: 4, title: 'react', content: 'react is ...', link: `#`},
+  { id: 5, title: 'vue', content: 'vue is ...', link: `#`},
+  { id: 6, title: 'node', content: 'node is ...', link: `#`},
+  { id: 7, title: 'gatsby', content: 'gatsby is ...', link: `#`},
 ]
 export const SearchBox = Template.bind({});
 SearchBox.args = {

@@ -2,11 +2,11 @@ import React, { useState } from "react"
 import styled from 'styled-components'
 
 interface Props {
-  posts?: any
+  posts?: {[key: string]: string | number}[]
   searchKey?: string
 }
 
-export const Search: React.FC<Props> = ({
+export const SearchInput: React.FC<Props> = ({
   posts,
   searchKey
 }) => {
@@ -18,7 +18,8 @@ export const Search: React.FC<Props> = ({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target)
     const query:string = e.target.value
-    const filteredData:never[] = posts.filter((post: any) => {
+    const filteredData: any = posts?.filter((post: any) => {
+      console.log(filteredData)
       const title = searchKey && post[searchKey]
       return title.toLowerCase().includes(query.toLowerCase())
     })
@@ -41,12 +42,14 @@ export const Search: React.FC<Props> = ({
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange(e)} 
       />
       {query && (
-        <div> {query !== `` ? `${query}の検索結果:${results.length}件` : `${results.length}件の記事があります`} </div>
+        <div> {query !== `` ? `${query}の検索結果:${results?.length}件` : `${results?.length}件の記事があります`} </div>
       )}
-      {results.map((result: {[key:string | number]: string | number}) => {
+      {results?.map((result:{[key: string]: string | number}) => {
         return(
           <>
-            {show &&  <p>{searchKey && result[searchKey]}</p>}
+            {query && 
+              <a href={result.link as string}><p>{searchKey && result[searchKey]}</p></a> 
+            }
           </>
         )
       })}
@@ -60,4 +63,4 @@ const searchList = styled.div`
 `
 
 
-export default Search
+export default SearchInput
