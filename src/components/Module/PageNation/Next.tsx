@@ -9,6 +9,8 @@ export interface Props {
   className?: string | number
   borderRound?: number
   ellipsis?: boolean
+  color?: string
+  path?: string
 }
 
 export const Next: React.FC<Props> = ({
@@ -17,16 +19,25 @@ export const Next: React.FC<Props> = ({
   totalPage,
   className,
   borderRound,
-  ellipsis
+  ellipsis,
+  color,
+  path
 }) => {
+  let pageNum
+  pageNum = path && (currentPage++) + 1
+  let current = path ? currentPage - 1 : currentPage
   return (
     <Btn
+      color={color}
+      href={path && `/${path}/${pageNum}`}
       borderRound={borderRound}
       onClick={() => {
-        const pageNum = (currentPage++) + 1;
-        setCurrentPage(pageNum)
+        if (!path) {
+          const pageNum = (currentPage++) + 1;
+          setCurrentPage(pageNum)
+        }
       }}
-      className={[currentPage == totalPage ? 'is-disabled' : null, className].join(' ')}>
+      className={[current == totalPage ? 'is-disabled' : null, className].join(' ')}>
       { ellipsis? '...' : '→'}
     </Btn>
   );
