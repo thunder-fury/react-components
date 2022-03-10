@@ -29,7 +29,7 @@ export const Prev: React.FC<Props> = ({
   return (
     <Btn
       color={color}
-      href={path && `/${path}/${pageNum}`}
+      href={path && `/${path}${pageNum}`}
       borderRound={borderRound}
       onClick={() => {
         if (!path) {

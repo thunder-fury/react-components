@@ -45,7 +45,7 @@ pagination.args = {
   upperPage: 1,　//보여주고싶은 페이지네이션수
   firstAndLast: true,　//첫 페이지 마지막 페이지 네이션 표시
   borderRound: 4,　
-  current: 2,
+  current: 1,
   datas: posts, // 통신한 게시물
   // displayData: false
   color: `#fff`

@@ -2,6 +2,7 @@ import React from 'react'
 import Next from './Next'
 import Prev from './Prev'
 import styled from 'styled-components'
+import { Color } from '../../../styles/common/Color'
 
 export const PageNationConfig = (info:{
     datas: any,
@@ -76,7 +77,7 @@ export const PagiNation: React.FC<Props> = ({
           >
             <Link
               color={color}
-              href={path &&`/${path}/${paginate(1)}`}
+              href={path &&`/${path}${paginate(1)}`}
               onClick={() => !path && paginate(1)}
             >1</Link>
           </PageNum>)
@@ -163,9 +164,9 @@ const PageNum: any = styled.li<Props>`
   justify-content: center;
   align-items: center;
   margin: 0 5px;
-  &:hover {
+  /* &:hover {
     background: #dfdfdf
-  }
+  } */
   &.is-current {
     background: ${(props) => (props.backgroundColor)};
     > a {
@@ -181,7 +182,7 @@ const Link = styled.a<{color?:string}>`
   height: 40px;
   width: 40px;
   font-weight: bold;
-  color: ${(props) => (props.color)};
+  color: ${(props) => (props.color ? props.color : Color.white)};
   /* color: ${(props) => (props.color)}; */
 `
 const Ellipsis = styled.li`
@@ -200,13 +201,17 @@ export const Btn: any = styled.a<{borderRound?: string, color?:string}>`
   width: 40px;
   cursor: pointer;
   border-radius: ${(props) => (props.borderRound)}px;
-  color: ${(props) => (props.color)};
-  &:hover {
-    background: #dfdfdf
-  }
+  color: ${(props) => (props.color ? props.color : Color.white)};
+  text-decoration: none;
+  /* &:hover {
+    background: #dfdfdf;
+  } */
   &.is-disabled {
     pointer-events: none;
     opacity: 0.1;
+    &:hover {
+      background: none;
+    }
   }
   &.ellipsis {
     &:hover {
