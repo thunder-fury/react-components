@@ -1,31 +1,38 @@
 import { useState } from 'react'
 
-// const daysShortArr = [
-//   'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'
-// ];
-const daysShortArr = ['월', '화', '수', '목', '금', '토', '일']
+const daysShortArr = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+// const daysShortArr = ['월', '화', '수', '목', '금', '토', '일']
 
-// const monthNamesArr = [
-//   'January', 'February', 'March', 'April',
-//   'May', 'June', 'July', 'August',
-//   'September', 'October', 'November', 'December'
-// ];
+const monthNamesArr = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+]
 const weekendJudgement = (j: number) =>
   j === 6 ? `saturday` : j === 7 ? `sunday` : ``
-const monthNamesArr = [
-  '1월',
-  '2월',
-  '3월',
-  '4월',
-  '5월',
-  '6월',
-  '7월',
-  '8월',
-  '9월',
-  '10월',
-  '11월',
-  '12월',
-]
+// const monthNamesArr = [
+//   '1월',
+//   '2월',
+//   '3월',
+//   '4월',
+//   '5월',
+//   '6월',
+//   '7월',
+//   '8월',
+//   '9월',
+//   '10월',
+//   '11월',
+//   '12월',
+// ]
 
 const useCalendar = (
   daysShort: string[] = daysShortArr,
