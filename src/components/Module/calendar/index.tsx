@@ -89,7 +89,7 @@ const TxtCenter = `
 const InnerCalendar = {
   header: styled.div`
     display: grid;
-    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-columns: 50px 5fr 50px;
     grid-template-rows: 1fr;
     background-color: ${Color.green};
     text-align: center;
