@@ -2,8 +2,10 @@ export const Color = {
   primary: `#34b4e3`,
 
   error: `#e3347d`,
+  red: `#e3347d`,
 
   success: `#4ce2a7`,
+  green: `#167e56`,
 
   dark: `#132e54`,
   darkBlack: `#222227`,

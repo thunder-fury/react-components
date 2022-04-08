@@ -3,11 +3,12 @@ import Next from './Next'
 import Prev from './Prev'
 import styled from 'styled-components'
 import { Color } from '../../../styles/common/Color'
+import { FIXME } from '../../../types/Any'
 
 interface Props {
   borderRound?: number
   backgroundColor?: string
-  setCurrentPage?: any
+  setCurrentPage?: FIXME
   firstAndLast?: boolean
   config: { [key: string]: number }
   color?: string

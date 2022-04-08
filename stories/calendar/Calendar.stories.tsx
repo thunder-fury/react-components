@@ -5,16 +5,16 @@ import Calendar from '../../src/components/Module/calendar'
 import Readme from './README.md'
 import { codeThema } from '../CodeThema'
 export default {
-  title: 'DatePicker',
+  title: 'Calendar',
   component: Calendar,
   argTypes: {
-    thema: {
-      control: {
-        type: 'select',
-        options: ['primary', 'error', 'success', 'dark'],
-      },
-    },
-    onClick: { action: 'clicked' },
+    // thema: {
+    //   control: {
+    //     type: 'select',
+    //     options: ['primary', 'error', 'success', 'dark'],
+    //   },
+    // },
+    // onClick: { action: 'clicked' },
     parameters: {
       docs: {
         description: { component: Readme },
@@ -27,5 +27,16 @@ codeThema(`Calendar`, Readme)
 
 const Template: Story = (args) => <Calendar {...args} />
 
-export const datePickr = Template.bind({})
-datePickr.args = {}
+export const calendar = Template.bind({})
+calendar.args = {
+  length: ``,
+}
+
+export const jaCalendar = Template.bind({})
+jaCalendar.args = {
+  length: `ja`,
+}
+export const koCalendar = Template.bind({})
+koCalendar.args = {
+  length: `ko`,
+}

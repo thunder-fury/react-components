@@ -1,8 +1,8 @@
-import {withDocs} from 'storybook-readme'
+import { withDocs } from 'storybook-readme'
 import { Story, Meta, storiesOf } from '@storybook/react'
 import { Button } from '../../src/components/Atoms/Button/'
 import Readme from './README.md'
-import {codeThema} from '../CodeThema'
+import { codeThema } from '../CodeThema'
 // storiesOf('Button', module)
 //   .addParameters({
 //     readme: {
@@ -19,21 +19,15 @@ import {codeThema} from '../CodeThema'
 //     <button>TEST</button>
 //   ));
 
-
 export default {
   title: 'Buttons',
   component: Button,
   argTypes: {
     thema: {
-      control: { 
-        type: 'select', 
-        options: [
-          'primary', 
-          'error', 
-          'success', 
-          'dark'
-        ] 
-      }
+      control: {
+        type: 'select',
+        options: ['primary', 'error', 'success', 'dark'],
+      },
     },
     onClick: { action: 'clicked' },
     // parameters: {
@@ -42,11 +36,9 @@ export default {
     //   },
     // },
   },
-} as Meta;
-
+} as Meta
 
 codeThema(`Buttons`, Readme)
-
 
 const Template: Story = (args) => <Button {...args} />
 export const TextBtn = Template.bind({})
@@ -54,15 +46,13 @@ TextBtn.args = {
   label: 'Button',
   radius: true,
   shadow: true,
-  fontColor: ''
-};
+  fontColor: '',
+}
 
 export const IconBtn = Template.bind({})
 IconBtn.args = {
   label: '🌪',
   radius: true,
   shadow: true,
-  fontColor: ''
-};
-
-
+  fontColor: '',
+}

@@ -9,7 +9,10 @@ type ColsType = {
   date: string
   value: number
 }
-const Calendar = () => {
+type Props = {
+  length?: string
+}
+const Calendar: React.FC<Props> = ({ length }) => {
   const {
     calendarRows,
     selectedDate,
@@ -23,20 +26,25 @@ const Calendar = () => {
     console.log(date)
   }
   return (
-    <Container>
+    <>
       <InnerCalendar.header>
         <button className="button" onClick={getPrevMonth}>
-          Prev
+          ＜
         </button>
-        <p>{`${selectedDate.getFullYear()}-${
-          monthNames[selectedDate.getMonth()]
-        }`}</p>
+        <InnerCalendar.date>
+          <h1>{`${monthNames(length)[selectedDate.getMonth()]}`}</h1>
+          <p>
+            {`${selectedDate.getFullYear()}/${
+              monthNames(length)[selectedDate.getMonth()]
+            }`}
+          </p>
+        </InnerCalendar.date>
         <button className="button" onClick={getNextMonth}>
-          Next
+          ＞
         </button>
       </InnerCalendar.header>
       <InnerCalendar.container>
-        {daysShort.map((day) => (
+        {daysShort(length).map((day) => (
           <InnerCalendar.weeek key={day}>{day}</InnerCalendar.weeek>
         ))}
       </InnerCalendar.container>
@@ -70,53 +78,11 @@ const Calendar = () => {
           )
         })}
       </InnerCalendar.container>
-      {/* <table className="table">
-        <thead>
-          <tr>
-            {daysShort.map((day) => (
-              <th key={day}>{day}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {Object.values(calendarRows).map((cols: FIXME) => {
-            return (
-              <tr key={cols[0].date}>
-                {cols.map((col: ColsType) =>
-                  col.date === todayFormatted ? (
-                    <ActiveDate
-                      key={col.date}
-                      onClick={(e: React.MouseEvent<HTMLElement>) =>
-                        dateClickHandler(col.date)
-                      }
-                    >
-                      {col.value}
-                    </ActiveDate>
-                  ) : (
-                    <Date
-                      key={col.date}
-                      notCurMonth={col.classes}
-                      onClick={(e: React.MouseEvent<HTMLElement>) =>
-                        dateClickHandler(col.date)
-                      }
-                    >
-                      {col.value}
-                    </Date>
-                  )
-                )}
-              </tr>
-            )
-          })}
-        </tbody>
-      </table> */}
-    </Container>
+    </>
   )
 }
-const Container = styled.div`
-  max-width: 500px;
-  width: 100%;
-`
 const TxtCenter = `
+  display: flex;
   align-items: center;
   justify-content: center;
 `
@@ -124,6 +90,18 @@ const InnerCalendar = {
   header: styled.div`
     display: grid;
     grid-template-columns: 1fr 5fr 1fr;
+    grid-template-rows: 1fr;
+    background-color: ${Color.green};
+    text-align: center;
+    color: ${Color.white};
+    grid-auto-rows: 100px;
+  `,
+  date: styled.div`
+    h1,
+    p {
+      margin: 0;
+      text-shadow: 0 0.3rem 0.5rem rgb(0 0 0 / 14%);
+    }
   `,
   container: styled.div`
     display: grid;
@@ -137,7 +115,6 @@ const InnerCalendar = {
   `,
   weeek: styled.div`
     color: ${Color.white};
-    display: flex;
     ${TxtCenter}
   `,
 }
@@ -147,16 +124,14 @@ const Date = styled.div<{ option: string }>`
     props.option === `saturday`
       ? `${Color.primary}`
       : props.option === `sunday`
-      ? `${Color.error}`
+      ? `${Color.red}`
       : props.option
       ? `${Color.gray2}`
       : `${Color.white}`};
-  display: flex;
   font-size: 12px;
   ${TxtCenter}
 `
 const ActiveDate = styled.div`
-  display: flex;
   ${TxtCenter}
   background-color: ${Color.primary};
   border-radius: 20px;
