@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
-import Pagination, { PageNationConfig } from '../../src/components/Module/PageNation'
-import styled from 'styled-components';
+import React, { useState } from 'react'
+import Pagination from '../../src/components/Module/PageNation'
+import usePagenation from '../../src/hooks/usePagenation'
+import styled from 'styled-components'
 import Posts from './Posts'
+import { FIXME } from '../../src/types/Any'
 export interface Props {
   count?: number
   backgroundColor?: string
   totalPage?: number
-  upperPage?: any
+  upperPage?: number
   postsPerList?: number
   firstAndLast?: boolean
   borderRound?: number
-  datas?: any
+  datas?: FIXME
   displayData?: boolean
   current?: number
 }
@@ -29,10 +31,10 @@ export const PageNation: React.FC<Props> = ({
   datas,
   displayData,
   current,
-  upperPage
+  upperPage,
 }) => {
   // // 현재 페이지 를 설정하는 훅이다
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1)
   // /*
   //   이 컴포넌트는 총 페이지에수에서 보여주는 페이지네이션이 보다 크거나 마이너스 가 되거나
   //   보여주고싶은 페이지네이션이 극단적으로 설정이 될경우엔 이 페이지 네이션은 잘 동작하지 않을것이다 계산에 맞게 잘 설정을 해야된다.
@@ -90,27 +92,27 @@ export const PageNation: React.FC<Props> = ({
   // 보여주고싶은 게시물수가 될것이다 */
   // let currentPosts = datas && datas.slice(indexOfFirstPost, indexOfLastPost)
 
-  const pageNationConfig = PageNationConfig({
+  const config = usePagenation({
     datas,
-    currentPage: current,
+    currentPage,
     perPage: 2,
-    upperPage: upperPage
+    upperPage,
   })
-  console.log(pageNationConfig.currentPosts)
+  console.log(config.currentPosts)
   return (
     <PaginationContainer>
-      {(<Posts posts={pageNationConfig.currentPosts} />)}
+      {<Posts posts={config.currentPosts} />}
       {count > 0 && (
         <Pagination
-          config={pageNationConfig}
+          config={config}
           setCurrentPage={setCurrentPage}
           backgroundColor={`#000`}
           firstAndLast={firstAndLast}
           borderRound={borderRound}
-          path='test'
+          // path="test"
         />
       )}
     </PaginationContainer>
-  );
-};
+  )
+}
 export default PageNation
