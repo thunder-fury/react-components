@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { PageNation } from '.'
 import Readme from './README.md'
@@ -17,51 +16,48 @@ export default {
       },
     },
   },
-};
+}
 
 codeThema(`Pagination`, Readme)
 
-
 const Template: Story = (args) => <PageNation {...args} />
 
-
 const posts = [
-  { id: 1, name: 'Test1', content: '', url: ''},
-  { id: 2, name: 'Test2', content: '', url: ''},
-  { id: 3, name: 'Test3', content: '', url: ''},
-  { id: 4, name: 'Test4', content: '', url: ''},
-  { id: 5, name: 'Test5', content: '', url: ''},
-  { id: 6, name: 'Test6', content: '', url: ''},
-  { id: 7, name: 'Test7', content: '', url: ''},
-  { id: 8, name: 'Test8', content: '', url: ''},
-  { id: 9, name: 'Test9', content: '', url: ''},
-  { id: 10, name: 'Test10', content: '', url: ''},
+  { id: 1, name: 'Test1', content: '', url: '' },
+  { id: 2, name: 'Test2', content: '', url: '' },
+  { id: 3, name: 'Test3', content: '', url: '' },
+  { id: 4, name: 'Test4', content: '', url: '' },
+  { id: 5, name: 'Test5', content: '', url: '' },
+  { id: 6, name: 'Test6', content: '', url: '' },
+  { id: 7, name: 'Test7', content: '', url: '' },
+  { id: 8, name: 'Test8', content: '', url: '' },
+  { id: 9, name: 'Test9', content: '', url: '' },
+  { id: 10, name: 'Test10', content: '', url: '' },
 ]
-export const pagination = Template.bind({});
+export const pagination = Template.bind({})
 pagination.args = {
-  count: posts.length,　//게시물 수
-  postsPerList: 5,　//보여주고싶은 글
+  count: posts.length, //게시물 수
+  postsPerList: 5, //보여주고싶은 글
   backgroundColor: '#000',
-  upperPage: 1,　//보여주고싶은 페이지네이션수
-  firstAndLast: true,　//첫 페이지 마지막 페이지 네이션 표시
-  borderRound: 4,　
+  upperPage: 1, //보여주고싶은 페이지네이션수
+  firstAndLast: true, //첫 페이지 마지막 페이지 네이션 표시
+  borderRound: 4,
   current: 1,
-  datas: posts, // 통신한 게시물
+  datas: posts, // 통신한 게upperPage시물
   // displayData: false
-  color: `#fff`
-};
+  color: `#fff`,
+}
 
-
-export const listPagination = Template.bind({});
+export const listPagination = Template.bind({})
 listPagination.args = {
-  count: posts.length,　//게시물 수
-  postsPerList: 5,　//보여주고싶은 글
+  count: posts.length, //게시물 수
+  postsPerList: 5, //보여주고싶은 글
   backgroundColor: '#000',
   current: 1,
-  upperPage: 1,　//보여주고싶은 페이지네이션수
-  firstAndLast: true,　//첫 페이지 마지막 페이지 네이션 표시
-  borderRound: 4,　
+  upperPage: 1, //보여주고싶은 페이지네이션수
+  firstAndLast: true, //첫 페이지 마지막 페이지 네이션 표시
+  borderRound: 4,
   datas: posts, // 통신한 게시물
   displayData: true,
   color: `#fff`,
-};
+}

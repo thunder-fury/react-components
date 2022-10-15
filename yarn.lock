@@ -2148,6 +2148,23 @@
     resolve-from "^5.0.0"
     store2 "^2.12.0"
 
+"@thunder_fury/react-components@^0.7.7":
+  version "0.7.7"
+  resolved "https://registry.yarnpkg.com/@thunder_fury/react-components/-/react-components-0.7.7.tgz#483d1030a610ec650824d412391bacf056cb8a9e"
+  integrity sha512-vFiKGHRRxC0qQh5EWwixJ8snEW/F6vid8hjHP25BBKgpwNLK1Xy4byBc3f3O9qxBV6l1vOKYR1t2fg7DTyKH0g==
+  dependencies:
+    "@types/styled-components" "^5.1.9"
+    eslint-plugin-prettier "^4.0.0"
+
+"@thunder_fury/react-components@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@thunder_fury/react-components/-/react-components-0.8.0.tgz#578a082b185446e09710184ab4f41f395d013db9"
+  integrity sha512-Sb9gHf6RA9UWeThgYDLys5ljLju0F/z0ak3orYMrjOpTOLwIL7E78fbHf7gnZWt6lnrfW1e2AIKdXU/VVVz/zA==
+  dependencies:
+    "@thunder_fury/react-components" "^0.7.7"
+    "@types/styled-components" "^5.1.9"
+    eslint-plugin-prettier "^4.0.0"
+
 "@types/anymatch@*":
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/@types/anymatch/-/anymatch-1.3.1.tgz#336badc1beecb9dacc38bea2cf32adf627a8421a"

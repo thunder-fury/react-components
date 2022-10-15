@@ -1,3 +1,4 @@
+import { PageNationConfigType } from '../types'
 import { FIXME } from '../types/Any'
 
 const usePagenation = (info: {
@@ -5,7 +6,7 @@ const usePagenation = (info: {
   currentPage: number
   perPage: number
   upperPage: number
-}): { [key: string]: number } => {
+}): PageNationConfigType => {
   const { datas, currentPage, perPage, upperPage } = info
   const totalPage = Math.ceil(datas?.length / info.perPage)
   let startPage = currentPage - Math.round((upperPage - 1) / 2)

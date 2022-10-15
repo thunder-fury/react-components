@@ -9,6 +9,7 @@ export interface Props {
   backgroundColor?: string
   totalPage?: number
   upperPage?: number
+  perPage?: number
   postsPerList?: number
   firstAndLast?: boolean
   borderRound?: number
@@ -32,6 +33,7 @@ export const PageNation: React.FC<Props> = ({
   displayData,
   current,
   upperPage,
+  perPage,
 }) => {
   // // 현재 페이지 를 설정하는 훅이다
   const [currentPage, setCurrentPage] = useState(1)
@@ -95,21 +97,21 @@ export const PageNation: React.FC<Props> = ({
   const config = usePagenation({
     datas,
     currentPage,
-    perPage: 2,
-    upperPage,
+    perPage: 1,
+    upperPage: 2,
   })
   console.log(config.currentPosts)
   return (
     <PaginationContainer>
       {<Posts posts={config.currentPosts} />}
-      {count > 0 && (
+      {count && count > 0 && (
         <Pagination
           config={config}
           setCurrentPage={setCurrentPage}
           backgroundColor={`#000`}
           firstAndLast={firstAndLast}
           borderRound={borderRound}
-          // path="test"
+          currentPosts={undefined} // path="test"
         />
       )}
     </PaginationContainer>

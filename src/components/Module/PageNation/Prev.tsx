@@ -20,11 +20,11 @@ export const Prev: React.FC<Props> = ({
   borderRound,
   ellipsis,
   color,
-  path
+  path,
 }) => {
   let pageNum
-  pageNum = path && (currentPage++) - 1;
-  let current = path ? currentPage - 1 : currentPage
+  pageNum = path && currentPage++ - 1
+  const current = path ? currentPage - 1 : currentPage
   console.log(currentPage)
   return (
     <Btn
@@ -33,14 +33,15 @@ export const Prev: React.FC<Props> = ({
       borderRound={borderRound}
       onClick={() => {
         if (!path) {
-          pageNum = (currentPage++) - 1
+          pageNum = currentPage++ - 1
           setCurrentPage(pageNum)
         }
       }}
-      className={[current == 1 ? 'is-disabled' : null, className].join(' ')} >
-      { ellipsis? '...' : '←'}
+      className={[current == 1 ? 'is-disabled' : null, className].join(' ')}
+    >
+      {ellipsis ? '...' : '←'}
     </Btn>
-  );
-};
+  )
+}
 
 export default Prev

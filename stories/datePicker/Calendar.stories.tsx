@@ -1,13 +1,12 @@
 import * as React from 'react'
 import { withDocs } from 'storybook-readme'
 import { Story, Meta, storiesOf } from '@storybook/react'
-// import { Calendar } from '@thunder_fury/react-components'
-import Calendar from '../../src/components/Module/Calendar'
+import DatePicker from '../../src/components/Module/DatePicker'
 import { codeThema } from '../CodeThema'
 import Readme from './README.md'
 export default {
-  title: 'Calendar',
-  component: Calendar,
+  title: 'DatePicker',
+  component: DatePicker,
   argTypes: {
     // thema: {
     //   control: {
@@ -24,28 +23,17 @@ export default {
   },
 } as Meta
 
-codeThema(`Calendar`, Readme)
+codeThema(`DatePicker`, Readme)
 
 const Template: Story = (args) => {
   return (
     <>
-      <Calendar {...args} />
-      <br />
-      <Calendar {...args} />
+      <DatePicker {...args} />
     </>
   )
 }
 
-export const calendar = Template.bind({})
-calendar.args = {
+export const datePicker = Template.bind({})
+datePicker.args = {
   length: ``,
-}
-
-export const jaCalendar = Template.bind({})
-jaCalendar.args = {
-  length: `ja`,
-}
-export const koCalendar = Template.bind({})
-koCalendar.args = {
-  length: `ko`,
 }

@@ -4,7 +4,7 @@ import { Color } from '../../../styles/common/Color'
 export interface Props {
   label?: string
   onClick?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void
-  thema?: 'primary' | 'error' | 'success' | 'dark'
+  thema?: 'primary' | 'error' | 'success' | 'dark' | string
   radius?: boolean
   shadow?: boolean
   fontColor?: string
@@ -18,21 +18,20 @@ export const Button: React.FC<Props> = ({
   fontColor,
 }) => {
   return (
-    <Btn
-      fontColor={fontColor}
-      className={[
-        `is-${thema}`,
-        radius ? 'is-radius' : '',
-        shadow ? 'is-shadow' : '',
-      ].join(' ')}
-      onClick={onClick}
-    >
+    <Btn option={{ fontColor, thema, radius, shadow }} onClick={onClick}>
       {label ? label : `Button`}
     </Btn>
   )
 }
 
-const Btn = styled.button<{ fontColor?: string }>`
+const Btn = styled.button<{
+  option: {
+    fontColor?: string
+    thema?: 'primary' | 'error' | 'success' | 'dark' | string
+    radius?: boolean
+    shadow?: boolean
+  }
+}>`
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -40,39 +39,25 @@ const Btn = styled.button<{ fontColor?: string }>`
   padding: 0;
   appearance: none;
   ${(Props) =>
-    Props.fontColor ? `color: ${Props.fontColor};` : `color: ${Color.white};`}
-  background-color: ${Color.black};
-  &.is-shadow {
-    box-shadow: 0px 10px 50px ${Color.black};
-  }
+    Props.option.fontColor
+      ? `color: ${Props.option.fontColor};`
+      : `color: ${Color.white};`}
+  ${(props) =>
+    props.option.shadow && `box-shadow: 0px 10px 50px ${Color.black}`};
   padding: 10px 15px;
-  &.is-radius {
-    border-radius: 30px;
-  }
-  &.is-primary {
-    background-color: ${Color.primary};
-    &.is-shadow {
-      box-shadow: 0px 10px 50px ${Color.primary};
-    }
-  }
-  &.is-error {
-    background-color: ${Color.error};
-    &.is-shadow {
-      box-shadow: 0px 10px 50px ${Color.error};
-    }
-  }
-  &.is-success {
-    background-color: ${Color.success};
-    &.is-shadow {
-      box-shadow: 0px 10px 50px ${Color.success};
-    }
-  }
-  &.is-dark {
-    background-color: ${Color.dark};
-    &.is-shadow {
-      box-shadow: 0px 10px 50px ${Color.dark};
-    }
-  }
+  ${(props) => props.option.radius && ` border-radius: 30px;`};
+  ${(props) =>
+    props.option.thema === `primary`
+      ? ` background-color: ${Color.primary}`
+      : props.option.thema === `error`
+      ? `background-color: ${Color.error}`
+      : props.option.thema === `success`
+      ? `background-color: ${Color.success}`
+      : props.option.thema === `dark`
+      ? `background-color: ${Color.dark}`
+      : props.option.thema
+      ? `background-color: ${props.option.thema}`
+      : ``};
 `
 
 export default Button

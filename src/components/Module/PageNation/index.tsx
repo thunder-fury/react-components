@@ -3,19 +3,9 @@ import Next from './Next'
 import Prev from './Prev'
 import styled from 'styled-components'
 import { Color } from '../../../styles/common/Color'
+import { PageNationBaseType } from '../../../types'
 import { FIXME } from '../../../types/Any'
-
-interface Props {
-  borderRound?: number
-  backgroundColor?: string
-  setCurrentPage?: FIXME
-  firstAndLast?: boolean
-  config: { [key: string]: number }
-  color?: string
-  path?: string
-}
-
-export const PagiNation: React.FC<Props> = ({
+export const PagiNation: React.FC<PageNationBaseType> = ({
   borderRound,
   backgroundColor,
   setCurrentPage,
@@ -29,7 +19,7 @@ export const PagiNation: React.FC<Props> = ({
     return pageNumber
   }
   const pageNumbers = []
-  for (let i: any = config.startPage; i <= config.endPage; i++) {
+  for (let i: number = config.startPage; i <= config.endPage; i++) {
     pageNumbers.push(i)
   }
   const displayFirstNum: number = firstAndLast ? 2 : 1
@@ -45,7 +35,7 @@ export const PagiNation: React.FC<Props> = ({
       </PageNum>
       <>
         {firstAndLast && config.startPage != 1 && (
-          <PageNum borderRound={borderRound}>
+          <PageNum borderRound={5 || borderRound}>
             <Link
               color={color}
               href={path && `/${path}${paginate(1)}`}
@@ -67,11 +57,12 @@ export const PagiNation: React.FC<Props> = ({
         )}
         {pageNumbers &&
           pageNumbers.map((number) => {
+            console.log(number)
             return (
               <PageNum
-                backgroundColor={backgroundColor}
+                backgroundColor={`#000` || backgroundColor}
+                borderRound={5 || borderRound}
                 key={number}
-                borderRound={borderRound}
                 className={config.currentPage == number ? 'is-current' : null}
               >
                 <Link
@@ -101,7 +92,7 @@ export const PagiNation: React.FC<Props> = ({
         )}
         {firstAndLast &&
           config.currentPage <= config.totalPage - config.upperPage / 2 && (
-            <PageNum borderRound={borderRound}>
+            <PageNum borderRound={5 || borderRound}>
               <Link
                 color={color}
                 href={path && `/${path}/${paginate(config.totalPage)}`}
@@ -135,7 +126,10 @@ const PageNation = styled.ul`
   align-items: center;
   margin: 0;
 `
-const PageNum: any = styled.li<Props>`
+const PageNum: FIXME = styled.li<{
+  borderRound: number
+  backgroundColor: string
+}>`
   border-radius: ${(props) => props.borderRound}px;
   display: flex;
   justify-content: center;
@@ -170,7 +164,10 @@ const Ellipsis = styled.li`
   justify-content: center;
 `
 
-export const Btn: any = styled.a<{ borderRound?: string; color?: string }>`
+export const Btn = styled.a<{
+  borderRound?: number
+  color?: string
+}>`
   display: flex;
   justify-content: center;
   align-items: center;

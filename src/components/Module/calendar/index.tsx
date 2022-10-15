@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react'
+import React, { FC, Fragment, useState } from 'react'
 import styled from 'styled-components'
-
 import useCalendar from '../../../hooks/useCalendar'
 import { Color } from '../../../styles/common/Color'
 import { FIXME } from '../../../types/Any'
+import Button from '../../Atoms/Button'
 type ColsType = {
   classes: string
   date: string
@@ -11,8 +11,11 @@ type ColsType = {
 }
 type Props = {
   length?: string
+  mode?: `normal` | `datePicker`
+  handler?: (date: string) => void
 }
-const Calendar: React.FC<Props> = ({ length }) => {
+
+const Calendar: FC<Props> = ({ length, handler, mode }) => {
   const {
     calendarRows,
     selectedDate,
@@ -22,15 +25,15 @@ const Calendar: React.FC<Props> = ({ length }) => {
     getNextMonth,
     getPrevMonth,
   } = useCalendar()
+  const [clickDate, setClickDate] = useState('')
   const dateClickHandler = (date: string) => {
-    console.log(date)
+    setClickDate(date)
   }
+
   return (
     <>
       <InnerCalendar.header>
-        <button className="button" onClick={getPrevMonth}>
-          ＜
-        </button>
+        <InnerCalendar.button label={`<`} onClick={getPrevMonth} />
         <InnerCalendar.date>
           <h1>{`${monthNames(length)[selectedDate.getMonth()]}`}</h1>
           <p>
@@ -39,9 +42,7 @@ const Calendar: React.FC<Props> = ({ length }) => {
             }`}
           </p>
         </InnerCalendar.date>
-        <button className="button" onClick={getNextMonth}>
-          ＞
-        </button>
+        <InnerCalendar.button label={`>`} onClick={getNextMonth} />
       </InnerCalendar.header>
       <InnerCalendar.container>
         {daysShort(length).map((day) => (
@@ -56,9 +57,9 @@ const Calendar: React.FC<Props> = ({ length }) => {
                 col.date === todayFormatted ? (
                   <ActiveDate
                     key={col.date}
-                    onClick={(e: React.MouseEvent<HTMLElement>) =>
-                      dateClickHandler(col.date)
-                    }
+                    onClick={(e: React.MouseEvent<HTMLElement>) => {
+                      handler ? handler(col.date) : dateClickHandler(col.date)
+                    }}
                   >
                     {col.value}
                   </ActiveDate>
@@ -66,9 +67,10 @@ const Calendar: React.FC<Props> = ({ length }) => {
                   <Date
                     key={col.date}
                     option={col.classes}
-                    onClick={(e: React.MouseEvent<HTMLElement>) =>
-                      dateClickHandler(col.date)
-                    }
+                    mode={`datePicker`}
+                    onClick={(e: React.MouseEvent<HTMLElement>) => {
+                      handler ? handler(col.date) : dateClickHandler(col.date)
+                    }}
                   >
                     {col.value}
                   </Date>
@@ -91,10 +93,15 @@ const InnerCalendar = {
     display: grid;
     grid-template-columns: 50px 5fr 50px;
     grid-template-rows: 1fr;
-    background-color: ${Color.green};
+    background-color: ${Color.dark};
     text-align: center;
     color: ${Color.white};
     grid-auto-rows: 100px;
+    padding: 10px;
+  `,
+  button: styled(Button)`
+    justify-self: center;
+    align-self: center;
   `,
   date: styled.div`
     h1,
@@ -106,20 +113,26 @@ const InnerCalendar = {
   container: styled.div`
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-auto-rows: minmax(50px, auto);
-    grid-auto-columns: minmax(50px, auto);
+    grid-auto-rows: minmax(40px, auto);
+    grid-auto-columns: minmax(40px, auto);
     align-items: center;
     justify-items: center;
-    grid-gap: 10px;
+    /* grid-gap: 10px; */
     background-color: ${Color.darkBlack};
+    padding: 10px;
   `,
   weeek: styled.div`
+    width: 100%;
+    height: 100%;
     color: ${Color.white};
     ${TxtCenter}
   `,
 }
 
-const Date = styled.div<{ option: string }>`
+const Date = styled.div<{ option: string; mode: `normal` | `datePicker` }>`
+  width: 100%;
+  height: 100%;
+  cursor: ${(props) => (props.mode === `datePicker` ? `pointer` : `initial`)};
   color: ${(props) =>
     props.option === `saturday`
       ? `${Color.primary}`
@@ -130,6 +143,10 @@ const Date = styled.div<{ option: string }>`
       : `${Color.white}`};
   font-size: 12px;
   ${TxtCenter}
+`
+const DateInner = styled.div`
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 `
 const ActiveDate = styled.div`
   ${TxtCenter}
