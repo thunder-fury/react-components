@@ -96,11 +96,11 @@ export const PageNation: React.FC<Props> = ({
 
   const config = usePagenation({
     datas,
-    currentPage,
+    currentPage: 7,
     perPage: 1,
-    upperPage: 2,
+    upperPage: 3,
   })
-  console.log(config.currentPosts)
+  console.log(config)
   return (
     <PaginationContainer>
       {<Posts posts={config.currentPosts} />}

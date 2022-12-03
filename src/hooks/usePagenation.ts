@@ -11,13 +11,11 @@ const usePagenation = (info: {
   const totalPage = Math.ceil(datas?.length / info.perPage)
   let startPage = currentPage - Math.round((upperPage - 1) / 2)
   let endPage = currentPage + Math.floor((upperPage - 1) / 2)
-  if (startPage < 1) {
-    endPage += 1 - startPage
-  }
+
+  if (startPage < 1) endPage += 1 - startPage
   startPage = Math.max(startPage, 1)
-  if (endPage > totalPage) {
-    startPage -= endPage - totalPage
-  }
+
+  if (endPage > totalPage) startPage -= endPage - totalPage
   endPage = Math.min(totalPage, endPage)
 
   const indexOfLastPost = info.currentPage * info.perPage

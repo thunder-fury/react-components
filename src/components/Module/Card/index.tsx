@@ -7,7 +7,7 @@ interface Props {
   title?: string
   txt?: string
   radius?: boolean
-  shadow?:boolean
+  shadow?: boolean
   btnLabel?: string
   onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void
   fontColor?: string
@@ -21,21 +21,19 @@ export const Card: React.FC<Props> = ({
   radius,
   shadow,
   btnLabel,
-  fontColor
+  fontColor,
 }) => {
-  return(
+  return (
     <>
       <ModalBox>
         <ModalBoxInner
           className={[
             `is-${thema}`,
-            radius? 'is-radius': '',
-            shadow? 'is-shadow' : ''
+            radius ? 'is-radius' : '',
+            shadow ? 'is-shadow' : '',
           ].join(' ')}
         >
-          <Title
-            className={`is-${thema}`}
-          >{title}</Title>
+          <Title className={`is-${thema}`}>{title}</Title>
           <Txt>{txt}</Txt>
           <Button
             thema={thema}
@@ -47,12 +45,9 @@ export const Card: React.FC<Props> = ({
           />
         </ModalBoxInner>
       </ModalBox>
-      
     </>
   )
 }
-
-
 
 const ModalBox = styled.section`
   position: relative;
@@ -89,10 +84,9 @@ const ModalBoxInner = styled.div`
   }
   &.is-dark {
     &.is-shadow {
-      box-shadow: 0px 10px 50px  ${Color.dark};
+      box-shadow: 0px 10px 50px ${Color.dark};
     }
   }
-
 `
 const Title = styled.h2`
   margin: initial;
