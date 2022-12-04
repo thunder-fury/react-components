@@ -1,7 +1,5 @@
 import * as React from 'react'
-import { withDocs } from 'storybook-readme'
-import { Story, Meta, storiesOf } from '@storybook/react'
-// import { Calendar } from '@thunder_fury/react-components'
+import { Story, Meta } from '@storybook/react'
 import Calendar from '../../src/components/Module/Calendar'
 import { codeThema } from '../CodeThema'
 import Readme from './README.md'
