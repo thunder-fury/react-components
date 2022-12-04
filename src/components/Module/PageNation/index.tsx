@@ -63,7 +63,7 @@ export const PagiNation: React.FC<PageNationBaseType> = ({
                 backgroundColor={`#000` || backgroundColor}
                 borderRound={5 || borderRound}
                 key={number}
-                className={config.currentPage == number ? 'is-current' : null}
+                className={config.currentPage == number ? 'is-current' : ''}
               >
                 <Link
                   color={color}
@@ -114,10 +114,6 @@ export const PagiNation: React.FC<PageNationBaseType> = ({
   )
 }
 
-const Container = styled.div`
-  display: flex;
-`
-
 const PageNation = styled.ul`
   display: flex;
   list-style: none;
@@ -126,9 +122,9 @@ const PageNation = styled.ul`
   align-items: center;
   margin: 0;
 `
-const PageNum: FIXME = styled.li<{
-  borderRound: number
-  backgroundColor: string
+const PageNum = styled.li<{
+  borderRound?: number
+  backgroundColor?: string
 }>`
   border-radius: ${(props) => props.borderRound}px;
   display: flex;

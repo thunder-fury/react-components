@@ -6,3 +6,5 @@ src
 .node-version
 stories
 .storybook
+.storybook-static
+
