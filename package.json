@@ -26,7 +26,7 @@
   "bugs": {
     "url": "https://github.com/thunder-fury/react-components/issues"
   },
-  "homepage": "https://thunderfury-react-component.netlify.app",
+  "homepage": "https://thunderfruy-react-components.vercel.app/",
   "devDependencies": {
     "@babel/core": "^7.13.14",
     "@storybook/addon-actions": "^6.2.3",
