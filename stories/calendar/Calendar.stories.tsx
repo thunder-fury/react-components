@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Story, Meta } from '@storybook/react'
-import Calendar from '../../src/components/Module/Calendar'
+import Calendar from '../../src/components/Module/Calendar/index'
 import { codeThema } from '../CodeThema'
 import Readme from './README.md'
 export default {
